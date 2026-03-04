@@ -14,14 +14,14 @@ const SearchForm = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Введіть назву міста"
         value={searchCity}
         onChange={(e) => setSearchCity(e.target.value)}
       />
-      <button type="submit">Пошук міста</button>
+      <button type="submit">Пошук</button>
     </form>
   );
 };
