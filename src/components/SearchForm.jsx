@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 
-const SearchForm = () => {
+const SearchForm = ({ onSearch }) => {
   const [searchCity, setSearchCity] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("e:", e);
-    console.log("Пошук міста:", searchCity);
+    if (searchCity.trim() === "") {
+      alert("Будь ласка, введіть назву міста.");
+      return;
+    }
+    onSearch(searchCity);
+    setSearchCity("");
   };
 
   return (
@@ -18,7 +21,7 @@ const SearchForm = () => {
         value={searchCity}
         onChange={(e) => setSearchCity(e.target.value)}
       />
-      <button type="submit">Пошук</button>
+      <button type="submit">Пошук міста</button>
     </form>
   );
 };
