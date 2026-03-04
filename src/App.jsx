@@ -1,6 +1,8 @@
 import { useState } from "react";
+
 import SearchForm from "./components/SearchForm";
 import CardInfo from "./components/CardInfo";
+import Loader from "./components/Loader";
 
 import weatherApi from "./api/weatherApi";
 
@@ -28,7 +30,7 @@ function App() {
       <h1 className="app-header">Погода</h1>
       <SearchForm onSearch={handleSearch} />
       {isLoading ? (
-        <p>Завантаження...</p>
+        <Loader />
       ) : (
         weatherData && <CardInfo weatherData={weatherData} />
       )}

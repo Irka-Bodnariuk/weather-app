@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const SearchForm = ({ onSearch }) => {
-  const [searchCity, setSearchCity] = useState("");
+  const [searchCity, setSearchCity] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (searchCity.trim() === "") {
-      alert("Будь ласка, введіть назву міста.");
+    if (searchCity.trim() === '') {
+      alert('Будь ласка, введіть назву міста.');
       return;
     }
-    onSearch(searchCity);
-    setSearchCity("");
+    onSearch(searchCity.trim());
+    setSearchCity('');
   };
 
   return (
     <form className="form" onSubmit={handleSubmit}>
       <input
+        autoFocus
         type="text"
         placeholder="Введіть назву міста"
         value={searchCity}

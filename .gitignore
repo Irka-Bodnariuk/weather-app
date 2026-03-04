@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 .env
+.prettierignore
+.prettierrc
+.stylelintrc.json
+
 
 # Editor directories and files
 .vscode/*
