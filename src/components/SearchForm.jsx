@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+import ErrorMessage from './ErrorMessage';
 
-const SearchForm = ({ onSearch }) => {
+const SearchForm = ({ onSearch, setError, isLoading }) => {
   const [searchCity, setSearchCity] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (searchCity.trim() === '') {
-      alert('Будь ласка, введіть назву міста.');
+      setError('Будь ласка, введіть назву міста.');
       return;
     }
+
     onSearch(searchCity.trim());
     setSearchCity('');
   };
@@ -21,8 +24,12 @@ const SearchForm = ({ onSearch }) => {
         placeholder="Введіть назву міста"
         value={searchCity}
         onChange={(e) => setSearchCity(e.target.value)}
+        disabled={isLoading}
+        autoFocus
       />
-      <button type="submit">Пошук</button>
+      <button type="submit" disabled={isLoading}>
+        Пошук
+      </button>
     </form>
   );
 };
